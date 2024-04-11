@@ -1,0 +1,22 @@
+<ul class="sidebar-nav list-group">
+  {% if user.is_authenticated %}
+    <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
+    <li class="list-group-item btn btn-outline-secondary"><a href="{% url 'logout'%}?next={{request.path}}">
+      <strong>Logout</strong> 
+    </a></li>
+  {% else %}
+    <li class="list-group-item btn btn-outline-secondary"><a href="{% url 'login'%}?next={{request.path}}">
+      <strong>Login</strong> 
+    </a></li>
+  {% endif %}
+
+  <br>
+
+  <li class="list-group btn btn-outline-secondary"><a href="{% url 'msngr:index' %}">
+     <strong>Home</strong> 
+  </a></li>
+  <br>
+  <li class="list-group btn btn-outline-secondary"><a href="{% url 'msngr:users-list' %}">
+     <strong>Users</strong>
+  </a></li>
+</ul>

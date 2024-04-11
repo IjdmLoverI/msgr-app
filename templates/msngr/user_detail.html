@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container d-flex justify-content-center mt-4">
+    <div class="card-hover card">
+      <div class="card-header">
+        <h1 class="mb-0">
+          {% if request.user.id == user.id %}
+            <a href="{% url 'msngr:user-delete' pk=user.id %}" class="btn btn-danger link-to-page">Delete</a>
+          {% endif %}
+          <a href="{% url 'msngr:user-update' pk=user.id %}" class="btn btn-secondary link-to-page">Update</a>
+        </h1>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          {% if user.username %}
+            <tr>
+              <td class="fw-bold">Username:</td>
+              <td>{{ user.username }}</td>
+            </tr>
+          {% endif %}
+          {% if user.email %}
+            <tr>
+              <td class="fw-bold">E-mail:</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          {% endif %}
+          {% if user.first_name %}
+            <tr>
+              <td class="fw-bold">First name:</td>
+              <td>{{ user.first_name }}</td>
+            </tr>
+          {% endif %}
+          {% if user.last_name %}
+            <tr>
+              <td class="fw-bold">Last name:</td>
+              <td>{{ user.last_name }}</td>
+            </tr>
+          {% endif %}
+        </table>
+        <hr>
+      </div>
+    </div>
+  </div>
+{% endblock %}
