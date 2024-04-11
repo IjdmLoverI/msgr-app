@@ -11,10 +11,14 @@ class Conversation(models.Model):
 
 class Message(models.Model):
     sender = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="sent_messages"
+        User,
+        on_delete=models.CASCADE,
+        related_name="sent_messages"
     )
     conversation = models.ForeignKey(
-        Conversation, on_delete=models.CASCADE, related_name="messages"
+        Conversation,
+        on_delete=models.CASCADE,
+        related_name="messages"
     )
     sent_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
